@@ -559,7 +559,9 @@ class User:
             f = maybe_future(spawner.start())
             # commit any changes in spawner.start (always commit db changes before yield)
             db.commit()
+            self.log.warning("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDE");
             url = await gen.with_timeout(timedelta(seconds=spawner.start_timeout), f)
+            self.log.warning("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDE");
             if url:
                 # get ip, port info from return value of start()
                 if isinstance(url, str):
@@ -572,14 +574,18 @@ class User:
                 urlinfo = urlparse(url)
                 server.proto = urlinfo.scheme
                 server.ip = urlinfo.hostname
+                self.log.warning("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDE");
                 port = urlinfo.port
+                self.log.warning("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDE");
                 if not port:
                     if urlinfo.scheme == 'https':
                         port = 443
                     else:
                         port = 80
                 server.port = port
+                self.log.warning("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDE");
                 db.commit()
+                self.log.warning("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDE");
             else:
                 # prior to 0.7, spawners had to store this info in user.server themselves.
                 # Handle < 0.7 behavior with a warning, assuming info was stored in db by the Spawner.
@@ -626,6 +632,7 @@ class User:
                         url_path_join(self.url, server_name, 'oauth_callback'),
                     )
                     db.commit()
+                self.log.warning("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDE");
 
 
         except Exception as e:
