@@ -626,8 +626,7 @@ class User:
                         url_path_join(self.url, server_name, 'oauth_callback'),
                     )
                     db.commit()
-        self.log.warning("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDE");
-                    
+
 
         except Exception as e:
             if isinstance(e, gen.TimeoutError):
@@ -670,6 +669,7 @@ class User:
         db.commit()
         spawner._waiting_for_response = True
         await self._wait_up(spawner)
+        self.log.warning("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDE");
 
     async def _wait_up(self, spawner):
         """Wait for a server to finish starting.
