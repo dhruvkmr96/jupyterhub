@@ -480,6 +480,7 @@ class User:
         JupyterHub expects more than one single-server per user
         url of the server will be /user/:name/:server_name
         """
+        print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD");
         db = self.db
 
         if handler:
@@ -624,6 +625,8 @@ class User:
                         url_path_join(self.url, server_name, 'oauth_callback'),
                     )
                     db.commit()
+        print("DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDE");
+                    
 
         except Exception as e:
             if isinstance(e, gen.TimeoutError):
